@@ -1,5 +1,7 @@
 # Mnist-practise
 
+## Abstract
+
 This project will use Deep Learning technique to solve mnist digit hand writing problem.
 
 For ease of writing code, I use keras, it's easy and intuitive.
@@ -13,3 +15,14 @@ Multi-column Deep Neural Networks for Image Classification
 The performance is exciting.
 
 The next step I want to compare the CNN and LSTM on this dataset and learn more basic idea about it.
+
+## Test
+
+DNN:
+
+CNN:
+
+CNN2:
+```
+10 epoch for 1150s ('Test score:', 0.070545128054809794)
+```
