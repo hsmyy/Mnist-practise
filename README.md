@@ -21,6 +21,9 @@ The next step I want to compare the CNN and LSTM on this dataset and learn more 
 DNN:
 
 CNN:
+```
+30 epoch for 21000s ('Test score:', 0.20866020459792831)
+```
 
 CNN2:
 ```
