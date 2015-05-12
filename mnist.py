@@ -132,6 +132,45 @@ def DNN(X_train, Y_train, X_test, Y_test):
     print('Test score:', score[0])
     print('Test accuracy:', score[1])
 
+def CNN2(X_train, Y_train, X_test, Y_test):
+    batch_size = 64
+    nb_classes = 10
+    nb_epoch = 20
+    np.random.seed(1337)
+    X_train = X_train.reshape(60000,1, 28, 28)
+    X_test = X_test.reshape(10000,1, 28, 28)
+    X_train = X_train.astype("float32")
+    X_test.astype("float32")
+    #X_train /= 255
+    #X_test /= 255
+    print(X_train.shape, 'train samples')
+    print(Y_train.shape, 'train labels')
+    print(X_test.shape, 'test smaples')
+
+    Y_train = np_utils.to_categorical(Y_train, nb_classes)
+    Y_test = np_utils.to_categorical(Y_test, nb_classes)
+
+    model = Sequential()
+    model.add(Convolution2D(4, 1, 5, 5, border_mode='valid'))
+    model.add(Activation('tanh'))
+    model.add(Convolution2D(8, 4, 3, 3, border_mode='valid'))
+    model.add(Activation('tanh'))
+    model.add(MaxPooling2D(poolsize=(2, 2)))
+    model.add(Convolution2D(16, 8, 3, 3, border_mode='valid'))
+    model.add(Activation('tanh'))
+    model.add(MaxPooling2D(poolsize=(2,2)))
+    model.add(Flatten())
+    model.add(Dense(16 * 4 * 4, 128, init='normal'))
+    model.add(Activation('tanh'))
+    model.add(Dense(128, nb_classes, init='normal'))
+    model.add(Activation('softmax'))
+    sgd = SGD(l2=0.0, lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
+    model.compile(loss='categorical_crossentropy', optimizer=sgd)
+    model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=10, shuffle=True, verbose=1, show_accuracy=True, validation_split=0.2)
+    score = model.evaluate(X_test, Y_test, batch_size=batch_size)
+    print('Test score:', score)
+
+
 def CNN(X_train, Y_train, X_test, Y_test):
     batch_size = 64
     nb_classes = 10
@@ -167,7 +206,7 @@ def CNN(X_train, Y_train, X_test, Y_test):
     model.add(Activation('softmax'))
     sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(loss='categorical_crossentropy', optimizer=sgd)
-    model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=100)
+    model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=30)
     score = model.evaluate(X_test, Y_test, batch_size=batch_size)
     print('Test score:', score)
 
