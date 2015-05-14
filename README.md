@@ -29,3 +29,8 @@ CNN2:
 ```
 10 epoch for 1150s ('Test score:', 0.070545128054809794)
 ```
+
+CNN2 with relu activation:
+```
+10 epoch for 1000s ('Test score:', 2.3021199735210596)
+```
