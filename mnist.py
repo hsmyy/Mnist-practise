@@ -132,7 +132,7 @@ def DNN(X_train, Y_train, X_test, Y_test):
     print('Test score:', score[0])
     print('Test accuracy:', score[1])
 
-def CNN2(X_train, Y_train, X_test, Y_test):
+def CNN2(X_train, Y_train, X_test, Y_test, activation='relu'):
     batch_size = 64
     nb_classes = 10
     nb_epoch = 20
@@ -152,16 +152,16 @@ def CNN2(X_train, Y_train, X_test, Y_test):
 
     model = Sequential()
     model.add(Convolution2D(4, 1, 5, 5, border_mode='valid'))
-    model.add(Activation('tanh'))
+    model.add(Activation(activation))
     model.add(Convolution2D(8, 4, 3, 3, border_mode='valid'))
-    model.add(Activation('tanh'))
+    model.add(Activation(activation))
     model.add(MaxPooling2D(poolsize=(2, 2)))
     model.add(Convolution2D(16, 8, 3, 3, border_mode='valid'))
-    model.add(Activation('tanh'))
+    model.add(Activation(activation))
     model.add(MaxPooling2D(poolsize=(2,2)))
     model.add(Flatten())
     model.add(Dense(16 * 4 * 4, 128, init='normal'))
-    model.add(Activation('tanh'))
+    model.add(Activation(activation))
     model.add(Dense(128, nb_classes, init='normal'))
     model.add(Activation('softmax'))
     sgd = SGD(l2=0.0, lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
@@ -217,5 +217,6 @@ if __name__ == "__main__":
     mn = MNIST('.')
     if mn.test():
         print ('Passed')
-        CNN(np.array(mn.train_images), np.array(mn.train_labels), np.array(mn.test_images), np.array(mn.test_labels))
+        #CNN2(np.array(mn.train_images), np.array(mn.train_labels), np.array(mn.test_images), np.array(mn.test_labels), 'tanh')
+        CNN2(np.array(mn.train_images), np.array(mn.train_labels), np.array(mn.test_images), np.array(mn.test_labels), 'relu')
         # DNN(np.array(mn.train_images), np.array(mn.train_labels), np.array(mn.test_images), np.array(mn.test_labels))
