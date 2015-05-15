@@ -22,15 +22,20 @@ DNN:
 
 CNN:
 ```
-30 epoch for 21000s ('Test score:', 0.20866020459792831)
+30 epoch in 21000s ('Test score:', 0.20866020459792831)
 ```
 
 CNN2:
 ```
-10 epoch for 1150s ('Test score:', 0.070545128054809794)
+10 epoch in 1150s ('Test score:', 0.070545128054809794)
 ```
 
 CNN2 with relu activation:
 ```
-10 epoch for 1000s ('Test score:', 2.3021199735210596)
+10 epoch in 1000s ('Test score:', 2.3021199735210596)
+```
+
+CNN2 with dropout 0.5 before flatten
+```
+10 epoch in 960s ('Test score:', 2.3021494342803526)
 ```
