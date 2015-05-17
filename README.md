@@ -18,14 +18,14 @@ The next step I want to compare the CNN and LSTM on this dataset and learn more 
 
 ## Test
 
-DNN:
+DNN:  FC128-FC128-FC10-SoftMax
 
-CNN:
+CNN:  
 ```
 30 epoch in 21000s ('Test score:', 0.20866020459792831)
 ```
 
-CNN2:
+CNN2: CV4(5*5)-CV8(3*3)-MP2*2-CV16(3*3)-MP2*2-FC-128-FC10-SoftMax
 ```
 10 epoch in 1150s ('Test score:', 0.070545128054809794)
 ```
@@ -39,3 +39,11 @@ CNN2 with dropout 0.5 before flatten
 ```
 10 epoch in 960s ('Test score:', 2.3021494342803526)
 ```
+
+CNN3: CV4(5*5)-CV8(3*3)-MP2*2-CV16(3*3)-CV32(2*2)-MP2*2-FC128-FC10-Softmax
+```
+10 epoch in 2400s 
+loss: 0.0266 - acc.: 0.9912 - val. loss: 0.0523 - val. acc.: 0.9848
+('Test score:', 0.049439467147584119)
+```
+
