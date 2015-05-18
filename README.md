@@ -47,3 +47,10 @@ loss: 0.0266 - acc.: 0.9912 - val. loss: 0.0523 - val. acc.: 0.9848
 ('Test score:', 0.049439467147584119)
 ```
 
+CNN4: CV8(5*5)-CV16(3*3)-MP2*2-CV32(3*3)-CV64(2*2)-MP2*2-FC256-FC10-Softmax
+```
+loss: 0.0045 - acc.: 0.9987 - val. loss: 0.0486 - val. acc.: 0.9882
+python mnist.py  6665.99s user 87.56s system 101% cpu 1:51:20.24 total
+('Test score:', 0.03452320910848105)
+```
+
